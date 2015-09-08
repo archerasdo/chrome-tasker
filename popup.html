@@ -1,0 +1,127 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+<head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+        body {
+            margin: 0 auto;
+        }
+
+        .row {
+            width: 300px;
+            margin: 0 20px;
+        }
+
+        .timer-recycle {
+            display: none;
+        }
+
+        .labelname {
+            display: none;
+        }
+        .selfEvt {
+            display: none;
+        }
+        #evttype {
+            display: none;
+        }
+        #delAll {
+            float: right;
+        }
+        .list-inline {
+            float: left;
+            line-height: 30px;
+        }
+        .task-list {
+            border-top: 1px dotted #e8e8e8;
+            padding-top: 10px;
+        }
+        .task {
+            padding-left: 5px;
+            height: 40px;;
+        }
+        .btn-sm {
+            margin-left: 5px;
+        }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="popup.js"></script>
+</head>
+<body>
+<div class="form row center-block">
+    <div class="form-group">
+        <label for="">任务生成器</label>
+    </div>
+    <div class="form-group ">
+        <label for="">事件类型</label>
+        <button id="eventClick" type="submit" class="btn btn-default event">点击</button>
+        <button id="eventRefresh" type="submit" class="btn btn-default event">刷新</button>
+        <button id="selfDef" type="submit" class="btn btn-default event">自定义</button>
+    </div>
+    <div class="form-group ">
+        <label for="">事件名</label>
+        <input id="evtname" class="form-control" name="input">
+    </div>
+    <div class="form-group labelname">
+        <label for="">标签名</label>
+        <input id="tagname" class="form-control" name="input">
+    </div>
+    <div class="form-group selfEvt">
+        <label for="">事件代码</label>
+        <textarea id="selfevt" class="form-control" name="input"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="">定时时间</label>
+        <input id="interval" class="form-control" name="input">
+    </div>
+    <div class="form-group radio-panel">
+        <label for="">是否循环</label>
+
+        <div class="radio-inline">
+            <label>
+                <input type="radio" name="optionsRadios" id="recycle-true" value="option1">
+                是
+            </label>
+        </div>
+        <div class="radio-inline">
+            <label>
+                <input type="radio" name="optionsRadios" value="option2" checked>
+                否
+            </label>
+        </div>
+    </div>
+    <div class="form-group timer-recycle">
+        <label for="">循环次数</label>
+        <input id="cycleNum" class="form-control" name="input">
+    </div>
+</div>
+<div class="form-group submit-panel" data-evttype="" data-iscycle=false>
+    <button id="submit" type="submit" class="btn btn-info">生成任务</button>
+    <button id="delAll" type="submit" class="btn btn-danger">一键清除</button>
+</div>
+<div class="form-group task-list row">
+    <!--<div id="evt_1" class="task">-->
+        <!--<ul class="list-inline col-xs-8">-->
+            <!--<li class="col-xs-4">evt</li>-->
+            <!--<li class="col-xs-6">desc</li>-->
+        <!--</ul>-->
+        <!--<button id="do" type="submit" class="btn btn-primary btn-sm">执行</button>-->
+        <!--<button id="del" type="submit" class="btn btn-danger btn-sm">删除</button>-->
+    <!--</div>-->
+</div>
+</div>
+</body>
+</html>
+
